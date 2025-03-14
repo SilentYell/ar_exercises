@@ -10,3 +10,8 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+
+@store1 = Store.find(1)
+@store2 = Store.find(2)
+
+@store.update(name: "New Burnaby")
