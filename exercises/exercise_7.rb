@@ -28,3 +28,15 @@ class Employee < ActiveRecord::Base
   validates :hourly_rate, numericality: { only_integer: true, greater_than_or_equal_to: 40, less_than_or_equal_to: 200 }
   validates :store, presence: true
 end
+
+puts "Enter a store name:"
+store_name = gets.chomp
+
+new_store = Store.new(name: store_name)
+if new_store.save
+  puts "Store created successfully!"
+else
+  new_store.errors.full_messages.each do |message|
+    puts message
+  end
+end
