@@ -11,6 +11,8 @@ puts "----------"
 
 # Your code goes here ...
 class Store < ActiveRecord::Base
+  has_many :employees
+  
   validates :name, presence: true, length: { minimum: 3 }
   validates :annual_revenue, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :must_carry_mens_or_womens_apparel
@@ -23,6 +25,8 @@ class Store < ActiveRecord::Base
 end
 
 class Employee < ActiveRecord::Base
+  belongs_to :store
+  
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :hourly_rate, numericality: { only_integer: true, greater_than_or_equal_to: 40, less_than_or_equal_to: 200 }
